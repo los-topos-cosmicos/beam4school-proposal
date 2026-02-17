@@ -78,10 +78,23 @@ COLORS = {
 # PHYSICS
 # ═══════════════════════════════════════════════════════════════
 
-def highland_theta0_mrad(p_GeV, x_cm, X0_cm):
+# Rest masses (GeV/c^2) for computing beta.
+MASS_GEV = {
+    "e-": 0.00051099895,
+    "e+": 0.00051099895,
+    "mu-": 0.1056583755,
+    "mu+": 0.1056583755,
+    "pi-": 0.13957039,
+    "pi+": 0.13957039,
+    "proton": 0.93827208816,
+}
+
+def highland_theta0_mrad(p_GeV, x_cm, X0_cm, particle="e-"):
     """Highland formula: RMS projected scattering angle in mrad."""
     p_MeV = p_GeV * 1000.0
-    beta = 1.0  # relativistic approximation (valid for GeV beams)
+    # beta = p / sqrt(p^2 + m^2). For electrons at GeV, beta≈1; for protons at a few GeV, this matters.
+    m = MASS_GEV.get(particle, 0.0)
+    beta = p_GeV / math.sqrt(p_GeV**2 + m**2) if p_GeV > 0 else 1.0
     ratio = x_cm / X0_cm
     if ratio <= 0:
         return 0.0
@@ -113,6 +126,7 @@ def load_request(filepath):
     # Defaults
     req.setdefault("author", "Anonymous")
     req.setdefault("description", "")
+    req.setdefault("outputs", {})
     req["beam"].setdefault("particle", "e-")
     req["beam"].setdefault("num_events", 10000)
     req["outputs"].setdefault("highland_prediction", True)
@@ -152,7 +166,7 @@ def compute_predictions(req):
                 continue
 
         for p in req["beam"]["momenta_GeV"]:
-            theta0 = highland_theta0_mrad(p, x_cm, db["X0_cm"])
+            theta0 = highland_theta0_mrad(p, x_cm, db["X0_cm"], particle=req["beam"].get("particle", "e-"))
             dE = bethe_bloch_dE_MeV(x_cm, db["rho"])
 
             results.append({

@@ -46,15 +46,14 @@ jobs:
         run: |
           python3 scripts/generate_macros.py "${{ inputs.request_file }}" \
             --output-dir macros_auto \
-            --results-dir geant4_output
+            --results-dir geant4_output \
+            --events-per-config "${{ inputs.events_per_config }}"
 
       - name: Run Geant4 simulations
+        env:
+          BEAMSCAN_BIN: ./build/beamscan
         run: |
-          OVERRIDE=${{ inputs.events_per_config }}
-          for mac in macros_auto/*.mac; do
-            echo "═══ Running $(basename $mac) ═══"
-            ./build/beamscan -m "$mac"
-          done
+          bash macros_auto/run_all.sh
 
       - name: Run Highland comparison
         run: |

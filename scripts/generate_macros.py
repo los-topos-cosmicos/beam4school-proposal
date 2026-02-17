@@ -15,6 +15,7 @@ Usage:
 import argparse
 import os
 import sys
+import re
 
 try:
     import yaml
@@ -35,11 +36,39 @@ PARTICLE_MAP = {
 }
 
 
+# Rest masses (MeV/c^2) for basic momentum→kinetic-energy conversion.
+MASS_MEV = {
+    "e-": 0.51099895,
+    "e+": 0.51099895,
+    "mu-": 105.6583755,
+    "mu+": 105.6583755,
+    "pi-": 139.57039,
+    "pi+": 139.57039,
+    "proton": 938.27208816,
+}
+
+
+def slugify(name: str) -> str:
+    """Make a filesystem-safe identifier."""
+    return re.sub(r"[^A-Za-z0-9._-]+", "_", name).strip("_")
+
+
+def momentum_to_kinetic_energy_MeV(p_MeV: float, particle: str) -> float:
+    """Convert momentum (MeV/c) to kinetic energy (MeV) for the given particle."""
+    m = MASS_MEV.get(particle)
+    if m is None:
+        # Fallback: treat as ultra-relativistic
+        return p_MeV
+    total_E = (p_MeV ** 2 + m ** 2) ** 0.5
+    return total_E - m
+
+
 def generate_macro(config, output_path):
     """Generate a single Geant4 macro file for one material × momentum."""
     particle = PARTICLE_MAP.get(config["particle"], config["particle"])
     p_GeV = config["momentum_GeV"]
     p_MeV = p_GeV * 1000.0
+    kin_MeV = momentum_to_kinetic_energy_MeV(p_MeV, particle)
 
     mac = f"""# ═══════════════════════════════════════════════════════════════
 # Auto-generated BeamScan macro
@@ -64,7 +93,7 @@ def generate_macro(config, output_path):
 
 # Beam configuration
 /gun/particle {particle}
-/gun/energy {p_MeV} MeV
+/gun/energy {kin_MeV:.6f} MeV
 /gun/direction 0 0 1
 /gun/position 0 0 -50 cm
 
@@ -84,6 +113,8 @@ def main():
     parser.add_argument("request_file", help="Path to YAML request file")
     parser.add_argument("--output-dir", default="simulation/macros/auto", help="Output directory")
     parser.add_argument("--results-dir", default="results/geant4", help="Where Geant4 CSV output goes")
+    parser.add_argument("--events-per-config", type=int, default=0,
+                        help="Override events per (material × momentum). 0 = use YAML value")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -95,7 +126,7 @@ def main():
     macros = []
     for mat in req["materials"]:
         for p in req["beam"]["momenta_GeV"]:
-            safe_name = f"{mat['name']}_{p}GeV_{mat['thickness_mm']}mm"
+            safe_name = f"{slugify(mat['name'])}_{p:.1f}GeV_{float(mat['thickness_mm']):.1f}mm"
             output_csv = os.path.join(args.results_dir, safe_name, "events.csv")
             os.makedirs(os.path.dirname(output_csv), exist_ok=True)
 
@@ -105,7 +136,8 @@ def main():
                 "thickness_mm": mat["thickness_mm"],
                 "momentum_GeV": p,
                 "particle": req["beam"].get("particle", "e-"),
-                "num_events": req["beam"].get("num_events", 10000),
+                "num_events": (args.events_per_config if args.events_per_config > 0
+                               else req["beam"].get("num_events", 10000)),
                 "output_csv": output_csv,
             }
 
@@ -120,10 +152,10 @@ def main():
         f.write("#!/bin/bash\n")
         f.write("# Auto-generated: run all Geant4 simulations\n")
         f.write(f"# From request: {args.request_file}\n\n")
-        f.write('BEAMSCAN="${BEAMSCAN_BIN:-./simulation/build/beamscan}"\n\n')
+        f.write('BEAMSCAN="${BEAMSCAN_BIN:-./build/beamscan}"\n\n')
         for mac in macros:
             f.write(f'echo "Running {os.path.basename(mac)}..."\n')
-            f.write(f'"$BEAMSCAN" -m {mac}\n\n')
+            f.write(f'"$BEAMSCAN" -m "{mac}"\n\n')
         f.write('echo "All simulations complete."\n')
     os.chmod(run_all, 0o755)
     print(f"\n  📋 Run script: {run_all}")

@@ -57,8 +57,18 @@ int main(int argc, char** argv)
 
     if (!ui) {
         // Batch mode — run macro from command line
+        // Support both:
+        //   ./beamscan mymacro.mac
+        // and (student-friendly):
+        //   ./beamscan -m mymacro.mac
+        G4String fileName;
+        if (argc == 3 && G4String(argv[1]) == "-m") {
+            fileName = argv[2];
+        } else {
+            fileName = argv[1];
+        }
+
         G4String command = "/control/execute ";
-        G4String fileName = argv[1];
         UImanager->ApplyCommand(command + fileName);
     } else {
         // Interactive mode

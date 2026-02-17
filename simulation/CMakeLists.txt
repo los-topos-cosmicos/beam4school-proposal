@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 project(BeamScan)
 
+# Use C++17 (needed for std::filesystem in output handling)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Find Geant4 (require vis and UI drivers for interactive mode)
 find_package(Geant4 REQUIRED ui_all vis_all)
 include(${Geant4_USE_FILE})

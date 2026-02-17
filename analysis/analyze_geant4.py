@@ -39,7 +39,18 @@ def analyze_event_file(filepath):
     with open(filepath) as f:
         reader = csv.DictReader(f)
         for row in reader:
-            theta_x.append(float(row['theta_x_mrad']))
+            # Column-name compatibility:
+            # - our analysis expects theta_x_mrad
+            # - Geant4 ntuple may use thetaX_mrad depending on how it was written
+            if 'theta_x_mrad' in row:
+                theta_x.append(float(row['theta_x_mrad']))
+            elif 'thetaX_mrad' in row:
+                theta_x.append(float(row['thetaX_mrad']))
+            else:
+                raise KeyError(
+                    "Missing scattering column: expected 'theta_x_mrad' or 'thetaX_mrad'. "
+                    f"Available columns: {list(row.keys())}"
+                )
 
     theta_x = np.array(theta_x)
 
@@ -95,9 +106,11 @@ def main():
         print(f"📊 Loaded {len(highland)} Highland predictions")
 
     # Find and analyze all Geant4 event files
-    event_files = sorted(glob.glob(os.path.join(args.geant4_dir, "*/events.csv")))
+    # Default expected name is events.csv, but Geant4 CSV output naming can vary.
+    # Prefer events.csv if present; otherwise fall back to the first CSV found in each run folder.
+    event_files = sorted(glob.glob(os.path.join(args.geant4_dir, "**/events.csv"), recursive=True))
     if not event_files:
-        event_files = sorted(glob.glob(os.path.join(args.geant4_dir, "**/events.csv"), recursive=True))
+        event_files = sorted(glob.glob(os.path.join(args.geant4_dir, "**/*.csv"), recursive=True))
 
     print(f"⚛️  Found {len(event_files)} Geant4 event files")
 
