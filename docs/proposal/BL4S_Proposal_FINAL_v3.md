@@ -24,7 +24,7 @@ Using the Highland formula with PDG radiation lengths, we calculated expected sc
 
 A natural gap separates the plastics cluster from the minerals cluster, reflecting a fundamental divide in chemistry: organic matter (C, H, O, N) versus inorganic matter (Si, Ca, Al, Fe). This gap is itself the scientific result — it proves MCS naturally sorts materials into compositional families.
 
-Our Geant4 simulations confirm that even the closest useful pairs (PS vs PMMA) need fewer than 2,000 events to distinguish at 3σ — seconds of beam time. PVC versus PE needs only ~50 events. The full 12-material atlas requires under one hour of data.
+Our Geant4 simulations confirm that even the closest useful pairs (PS vs PMMA) need fewer than 2,000 events to distinguish at 3σ — seconds of beam time. PVC versus PE needs only ~50 events. The full 11-material atlas requires under one hour of data.
 
 ### Experimental Setup (facility-agnostic)
 
