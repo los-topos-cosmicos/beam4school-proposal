@@ -9,18 +9,18 @@
 The BeamScan simulation system turns a simple text file into physics predictions and plots — automatically, in the cloud, with no software installation required.
 
 ```
-STUDENT                          GITHUB                           RESULT
-━━━━━━━━                         ━━━━━━                           ━━━━━━
-                                  ┌──────────────────┐
+STUDENT                           GITHUB                        RESULT
+━━━━━━━━                          ━━━━━━                        ━━━━━━
+                                  ┌────────────────-──┐
  Edit YAML file ──── git push ───►│ GitHub Actions    │
  in requests/                     │                   │
                                   │ 1. Parse YAML     │───► predictions.csv
                                   │ 2. Highland calc  │───► distributions.png
                                   │ 3. Plot generator │───► classification.png
                                   │ 4. PR commenter   │───► SUMMARY.md
-                                  └──────────────────┘          │
-                                                                │
- See results ◄──── PR comment ──────────────────────────────────┘
+                                  └──────────────-────┘          │
+                                                                 │
+ See results ◄──── PR comment ────────────────────────────────-──┘
  on GitHub         with plots
 ```
 
@@ -104,7 +104,7 @@ bl4s-beamscan/
 │    ├─ pip install numpy matplotlib pyyaml                       │
 │    ├─ python highland_calculator.py <request.yaml>              │
 │    │   ├─ Parse YAML → list of (material, momentum) pairs       │
-│    │   ├─ Highland formula: θ₀ = (13.6/p)√(x/X₀)[1+0.038ln()] │
+│    │   ├─ Highland formula: θ₀ = (13.6/p)√(x/X₀)[1+0.038ln()]   │
 │    │   ├─ Generate: distributions.png                           │
 │    │   ├─ Generate: classification.png                          │
 │    │   ├─ Generate: predictions.csv                             │
