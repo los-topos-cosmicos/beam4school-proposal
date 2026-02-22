@@ -4,10 +4,7 @@
 //
 
 #include "DetectorConstruction.hh"
-#include "PrimaryGeneratorAction.hh"
-#include "RunAction.hh"
-#include "EventAction.hh"
-#include "SteppingAction.hh"
+#include "ActionInitialization.hh"
 
 #include "G4RunManagerFactory.hh"
 #include "G4UImanager.hh"
@@ -40,14 +37,8 @@ int main(int argc, char** argv)
     auto detConstruction = new DetectorConstruction();
     runManager->SetUserInitialization(detConstruction);
 
-    // User actions
-    auto eventAction = new EventAction();
-    auto runAction = new RunAction();
-
-    runManager->SetUserAction(new PrimaryGeneratorAction());
-    runManager->SetUserAction(runAction);
-    runManager->SetUserAction(eventAction);
-    runManager->SetUserAction(new SteppingAction(eventAction));
+    // User actions (MT-compatible via ActionInitialization)
+    runManager->SetUserInitialization(new ActionInitialization());
 
     // Visualization
     auto visManager = new G4VisExecutive;
