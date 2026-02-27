@@ -124,18 +124,22 @@ jobs:
           path: ${{ steps.run.outputs.outdir }}
           retention-days: 30
 
-      - name: Comment results on PR
+      - name: Setup CML
         if: github.event_name == 'pull_request'
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body-path: ${{ steps.run.outputs.outdir }}/SUMMARY.md
+        uses: iterative/setup-cml@v3
+
+      - name: Comment results on PR (with inline images)
+        if: github.event_name == 'pull_request'
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cml comment update --publish "${{ steps.run.outputs.outdir }}/SUMMARY.md"
 
   # ─── Step 4: Commit results to repo (main branch only) ───
   commit_results:
     runs-on: ubuntu-latest
     needs: predict
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request'
     steps:
       - uses: actions/checkout@v4
       - name: Download all artifacts
@@ -159,3 +163,4 @@ jobs:
           git add results/
           git diff --cached --quiet || git commit -m "🔬 Update Highland predictions [skip ci]"
           git push
+          

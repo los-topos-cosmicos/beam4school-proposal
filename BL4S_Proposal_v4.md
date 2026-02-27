@@ -26,9 +26,9 @@ A natural gap separates the plastics cluster from the minerals cluster, reflecti
 
 ### Experimental Setup (facility-agnostic)
 
-Our core measurement requires only tracking detectors and trigger scintillators — standard equipment at all BL4S facilities:
+Our core measurement requires only four Delay Wire Chambers (DWCs) and a target holder — standard equipment at all BL4S facilities:
 
-Beam (1–6 GeV/c) → scintillator S₁ → trackers 1, 2 → TARGET → trackers 3, 4 → scintillator S₂.
+Beam (1–6 GeV/c) → DWC₁, DWC₂ → TARGET → DWC₃, DWC₄ → Pb-glass calorimeter (optional).
 
 Two trackers upstream record the incoming direction; two downstream record the direction after the target. We subtract the no-target angular width in quadrature to extract the material scattering signal. This layout works at CERN T9 (Delay Wire Chambers), at DESY (beam telescope), and at ELSA.
 
