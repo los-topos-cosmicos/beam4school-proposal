@@ -1,0 +1,43 @@
+author: "Matyas"
+
+project_name: "mummy_scan"
+
+description: "Non-invasive internal composition analysis of mummified remains to differentiate bone structure, embalming materials, and foreign inclusions using multi-energy scattering contrast"
+
+beam:
+  particle: "e-"
+  momenta_GeV: [0.8, 2.0]
+  num_events: 30000
+
+materials:
+  - name: "Bone_Sim"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 10.0
+    archaeological_role: "Skeletal structure proxy"
+
+  - name: "Resin"
+    geant4_name: "G4_POLYSTYRENE"
+    thickness_mm: 5.0
+    archaeological_role: "Embalming resin proxy"
+
+  - name: "Linen"
+    geant4_name: "G4_POLYETHYLENE"
+    thickness_mm: 5.0
+    archaeological_role: "Wrapping material proxy"
+
+  - name: "Iron"
+    geant4_name: "G4_Fe"
+    thickness_mm: 2.0
+    archaeological_role: "Possible metallic amulet or inclusion"
+
+analysis:
+  goal: "Differentiate skeletal remains, embalming materials, and hidden objects"
+  classification_method: "Dual-energy scattering RMS comparison"
+  expected_outcome: "Separation between high-density bone, organic wrappings, and metallic inclusions"
+
+outputs:
+  highland_prediction: true
+  geant4_simulation: false
+  classification_plot: true
+  distribution_overlay: true
+  comparison_table: true
