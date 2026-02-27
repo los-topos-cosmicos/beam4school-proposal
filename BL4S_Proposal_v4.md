@@ -1,12 +1,12 @@
 # BeamScan: A Particle-Beam Material Classifier — From Recycling to Heritage Science
 
-## 1. Motivation to Participate (~100 words)
+## 1. Motivation to Participate (~116 words)
 
 We are students and teachers from Instituto San Francisco de Asís in Santa Rosa de Calamuchita, Córdoba, Argentina. Two thousand years ago, the Comechingón people carved and shaped the rock of our region — and the artefacts preserved in our local museum still cannot be studied without risking damage. Today, mixed plastic waste arrives at recycling facilities where a single piece of PVC, invisible to the naked eye, can contaminate and ruin the entire batch. Two problems, two thousand years apart, the same challenge: characterising a material without destroying it. Particle physics offers one answer for both: multiple Coulomb scattering reveals atomic composition through deflection angles alone. Participating in BL4S means we can finally prove it works.
 
 ---
 
-## 2. Experiment Idea (~800 words)
+## 2. Experiment Idea (~752 words)
 
 ### The Question
 
