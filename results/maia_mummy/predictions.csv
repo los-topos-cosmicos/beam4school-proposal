@@ -1,0 +1,9 @@
+material,geant4_name,category,X0_cm,rho_gcc,thickness_mm,p_GeV,theta0_mrad,dE_MeV
+Bone_Sim,G4_CALCIUM_CARBONATE,heritage,8.7,2.8,10.0,0.8,5.2897,5.60
+Bone_Sim,G4_CALCIUM_CARBONATE,heritage,8.7,2.8,10.0,2.0,2.1159,5.60
+Resin,G4_POLYSTYRENE,plastic,42.5,1.05,5.0,0.8,1.5326,1.05
+Resin,G4_POLYSTYRENE,plastic,42.5,1.05,5.0,2.0,0.6130,1.05
+Linen,G4_POLYETHYLENE,plastic,47.9,0.94,5.0,0.8,1.4358,0.94
+Linen,G4_POLYETHYLENE,plastic,47.9,0.94,5.0,2.0,0.5743,0.94
+Iron,G4_Fe,metal,1.757,7.87,2.0,0.8,5.2620,3.15
+Iron,G4_Fe,metal,1.757,7.87,2.0,2.0,2.1048,3.15
