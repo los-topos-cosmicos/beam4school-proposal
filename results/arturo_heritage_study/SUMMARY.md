@@ -2,28 +2,36 @@
 
 **Author:** ArturoS (example)  
 **Description:** Heritage materials from the Sierras de Córdoba: minerals and pigments  
-**Generated:** 2026-02-27 21:29 UTC  
+**Generated:** 2026-02-27 22:00 UTC  
 **Method:** Highland formula (analytical)
 
 ## Beam Settings
 - Particle: `e-`
-- Momenta: [4.0, 5.0] GeV/c
-- Events requested: 5,000
+- Momenta: [3.0, 4.0, 5.0, 6.0] GeV/c
+- Events requested: 20,000
 
 ## Predictions
 
 | Material | p (GeV/c) | θ₀ (mrad) | ΔE (MeV) | X₀ (cm) | Thickness |
 |----------|-----------|-----------|----------|---------|----------|
+| Quartz | 3.0 | **1.170** | 4.4 | 12.29 | 10.0 mm |
 | Quartz | 4.0 | **0.877** | 4.4 | 12.29 | 10.0 mm |
 | Quartz | 5.0 | **0.702** | 4.4 | 12.29 | 10.0 mm |
+| Quartz | 6.0 | **0.585** | 4.4 | 12.29 | 10.0 mm |
+| Calcite | 3.0 | **1.411** | 5.6 | 8.7 | 10.0 mm |
 | Calcite | 4.0 | **1.058** | 5.6 | 8.7 | 10.0 mm |
 | Calcite | 5.0 | **0.846** | 5.6 | 8.7 | 10.0 mm |
+| Calcite | 6.0 | **0.705** | 5.6 | 8.7 | 10.0 mm |
+| Alumina | 3.0 | **1.575** | 7.9 | 7.1 | 10.0 mm |
 | Alumina | 4.0 | **1.181** | 7.9 | 7.1 | 10.0 mm |
 | Alumina | 5.0 | **0.945** | 7.9 | 7.1 | 10.0 mm |
+| Alumina | 6.0 | **0.787** | 7.9 | 7.1 | 10.0 mm |
+| Iron_pigment | 3.0 | **2.382** | 10.5 | 3.3 | 10.0 mm |
 | Iron_pigment | 4.0 | **1.787** | 10.5 | 3.3 | 10.0 mm |
 | Iron_pigment | 5.0 | **1.429** | 10.5 | 3.3 | 10.0 mm |
+| Iron_pigment | 6.0 | **1.191** | 10.5 | 3.3 | 10.0 mm |
 
-## Discrimination Power (at 4.0 GeV/c)
+## Discrimination Power (at 3.0 GeV/c)
 
 Events needed for 3σ separation:
 
