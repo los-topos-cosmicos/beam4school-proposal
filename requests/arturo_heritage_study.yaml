@@ -1,0 +1,32 @@
+# Can MCS identify archaeological materials?
+#
+# The Comechingón peoples of the Sierras de Córdoba shaped quartz, calcite, and iron-oxide pigments into tools and morteros.
+# If we can distinguish these minerals using particle beams, we gain a non-destructive tool for archaeology — no sample damage required.
+
+author: "ArturoS (example)"
+description: "Heritage materials from the Sierras de Córdoba: minerals and pigments"
+
+beam:
+  particle: "e-"
+  momenta_GeV: [2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0]
+  num_events: 20000
+
+materials:
+  - name: "Quartz"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 10.0
+  - name: "Calcite"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 10.0
+  - name: "Alumina"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 10.0
+  - name: "Iron_pigment"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 10.0
+
+outputs:
+  highland_prediction: true
+  classification_plot: true
+  distribution_overlay: true
+  comparison_table: true
