@@ -1,8 +1,8 @@
 # 🔬 BeamScan Simulation Results
 
-**Author:** María García  
+**Author:** Matias Rodriguez  
 **Description:** Multi-energy mineral differentiation of archaeological sculptures using radiation length contrast analysis  
-**Generated:** 2026-03-01 00:02 UTC  
+**Generated:** 2026-03-01 00:40 UTC  
 **Method:** Highland formula (analytical)
 
 ## Beam Settings
