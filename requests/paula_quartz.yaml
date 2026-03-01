@@ -1,0 +1,37 @@
+# BeamScan Simulation Request: Ore Inclusion Sensitivity
+
+author: "Paula"
+description: "Sensitivity study: Detecting thin lead (Pb) veins within a quartz (SiO2) matrix using Multiple Coulomb Scattering (MCS)."
+
+# ─── Beam Settings ───
+beam:
+  particle: "e-"            
+  momenta_GeV: [2.0, 5.0, 7.0] 
+  num_events: 25000         
+
+# ─── Target Materials ───
+# We compare pure quartz against quartz with increasing thicknesses of lead
+materials:
+  - name: "SiO2"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 10.0
+
+  - name: "SiO2_Pb_0.1mm"
+    geant4_name: "G4_Pb"    
+    thickness_mm: 0.1
+
+  - name: "SiO2_Pb_0.5mm"
+    geant4_name: "G4_Pb"   
+    thickness_mm: 0.5
+
+  - name: "SiO2_Pb_1.0mm"
+    geant4_name: "G4_Pb"    
+    thickness_mm: 1.0
+
+# ─── What to produce ───
+outputs:
+  highland_prediction: true 
+  geant4_simulation: true   
+  classification_plot: true  
+  distribution_overlay: true 
+  comparison_table: true 

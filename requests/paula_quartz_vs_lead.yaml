@@ -1,0 +1,39 @@
+# ═══════════════════════════════════════════════════════════════
+# BeamScan Simulation Request: Ore Inclusion Sensitivity
+# ═══════════════════════════════════════════════════════════════
+
+author: "Paula"
+description: "Sensitivity study: Detecting thin lead (Pb) veins within a quartz (SiO2) matrix using Multiple Coulomb Scattering (MCS)."
+
+# ─── Beam Settings ───
+beam:
+  particle: "e-"            # Electrons are great for seeing scattering at these energies
+  momenta_GeV: [2.0, 5.0, 7.0] # Testing different energies to find the optimal sensitivity
+  num_events: 25000         # High statistics to see small differences in the distribution tails
+
+# ─── Target Materials ───
+# We compare pure quartz against quartz with increasing thicknesses of lead
+materials:
+  - name: "SiO2"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 10.0
+
+  - name: "SiO2_Pb_0.1mm"
+    geant4_name: "G4_Pb"    # Simulating a very thin 100-micron inclusion
+    thickness_mm: 0.1
+
+  - name: "SiO2_Pb_0.5mm"
+    geant4_name: "G4_Pb"    # A half-millimeter inclusion
+    thickness_mm: 0.5
+
+  - name: "SiO2_Pb_1.0mm"
+    geant4_name: "G4_Pb"    # A clear 1mm inclusion for calibration
+    thickness_mm: 1.0
+
+# ─── What to produce ───
+outputs:
+  highland_prediction: true 
+  geant4_simulation: true   # Important: Lead has a high Z, we want the full Monte Carlo physics
+  classification_plot: true  # This will show if the Pb "fingerprint" is distinct from Quartz
+  distribution_overlay: true # This will show how the Gaussian peak widens with the Pb inclusion
+  comparison_table: true
