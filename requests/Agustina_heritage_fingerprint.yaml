@@ -1,0 +1,56 @@
+# Multi-mineral heritage fingerprint — Sierra de Comechingones
+# The rocks of the Sierra de Comechingones are predominantly
+# Geological reference: Asociación Geológica Argentina —
+# Sierra de Comechingones, Departamento Calamuchita.
+author: Agustina
+description: "Heritage fingerprint: distinguishing the minerals of Sierra de Comechingones non-destructively"
+beam:
+  particle: "e-"
+  momenta_GeV: [3.0, 6.0]
+  num_events: 10000
+materials:
+  # --- SiO2 — Quartz (gneisses and migmatites) ---
+  - name: "SiO2_5mm"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 5.0
+  - name: "SiO2_10mm"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 10.0
+  - name: "SiO2_20mm"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 20.0
+  # --- CaCO3 — Calcite (local marbles) ---
+  - name: "CaCO3_5mm"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 5.0
+  - name: "CaCO3_10mm"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 10.0
+  - name: "CaCO3_20mm"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 20.0
+  # --- Al2O3 — Alumina (biotite gneisses) ---
+  - name: "Al2O3_5mm"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 5.0
+  - name: "Al2O3_10mm"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 10.0
+  - name: "Al2O3_20mm"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 20.0
+  # --- Fe2O3 — Iron oxide (garnet-bearing gneisses) ---
+  - name: "Fe2O3_5mm"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 5.0
+  - name: "Fe2O3_10mm"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 10.0
+  - name: "Fe2O3_20mm"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 20.0
+outputs:
+  highland_prediction: true
+  classification_plot: false
+  distribution_overlay: true
+  comparison_table: true
