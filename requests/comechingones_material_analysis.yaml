@@ -1,0 +1,54 @@
+# comechingones_material_analysis.yaml
+
+author: "matias rodriguez"
+
+description: "This analysis identifies the original raw materials of Comechingón artifacts (such as arrow points and mortars) based on quartz, calcite, alumina, and hematite. Modern plastics (PE, PVC, PET) are also included to detect recent restorations or contamination. Thus, it distinguishes original materials, temporal alterations, and modern layers, reconstructing the material biography of the archaeological objects."
+
+beam:
+  particle: "e-"
+  momenta_GeV: [1.0, 2.0, 3.0]
+  num_events: 40000
+
+materials:
+  - name: "Quartz"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 5.0
+    archaeological_role: "Arrow point core material"
+
+  - name: "Calcite"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 5.0
+    archaeological_role: "Mortar base and tool composition"
+
+  - name: "Alumina"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 3.0
+    archaeological_role: "Clay temper in tools and vessels"
+
+  - name: "Hematite"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 3.0
+    archaeological_role: "Pigment in ceremonial artifacts"
+
+  - name: "PE"
+    geant4_name: "G4_POLYETHYLENE"
+    thickness_mm: 4.0
+    archaeological_role: "Modern contamination or restoration layer"
+
+  - name: "PVC"
+    geant4_name: "G4_POLYVINYL_CHLORIDE"
+    thickness_mm: 4.0
+    archaeological_role: "Modern adhesive or restoration layer"
+
+analysis:
+  goal: "Distinguish original Comechingón materials, weathering products, and modern plastic restorations to reconstruct the material history."
+
+  classification_method: "Multi-energy RMS scattering clustering"
+  expected_outcome: "Clear differentiation between ancient materials, altered layers, and modern plastics."
+
+outputs:
+  highland_prediction: true
+  geant4_simulation: false
+  classification_plot: true
+  distribution_overlay: true
+  comparison_table: true

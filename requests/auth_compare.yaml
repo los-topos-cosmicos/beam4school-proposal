@@ -1,0 +1,46 @@
+author: "matias rodriguez"
+
+description: "Differential material analysis to distinguish original archaeological artifacts from modern synthetic replicas using multi-energy scattering contrast"
+
+beam:
+  particle: "e-"
+  momenta_GeV: [1.0, 3.0]
+  num_events: 40000
+
+materials:
+  # ─── Original Mineral Composition ───
+  - name: "CaCO3"
+    geant4_name: "G4_CALCIUM_CARBONATE"
+    thickness_mm: 6.0
+
+  - name: "SiO2"
+    geant4_name: "G4_SILICON_DIOXIDE"
+    thickness_mm: 6.0
+
+  - name: "Fe2O3"
+    geant4_name: "G4_FERRIC_OXIDE"
+    thickness_mm: 3.0
+
+  - name: "Al2O3"
+    geant4_name: "G4_ALUMINUM_OXIDE"
+    thickness_mm: 3.0
+
+  # ─── Modern Replica Materials ───
+  - name: "PE"
+    geant4_name: "G4_POLYETHYLENE"
+    thickness_mm: 6.0
+
+  - name: "PVC"
+    geant4_name: "G4_POLYVINYL_CHLORIDE"
+    thickness_mm: 6.0
+
+  - name: "PET"
+    geant4_name: "G4_MYLAR"
+    thickness_mm: 6.0
+
+outputs:
+  highland_prediction: true
+  geant4_simulation: false
+  classification_plot: true
+  distribution_overlay: true
+  comparison_table: true
