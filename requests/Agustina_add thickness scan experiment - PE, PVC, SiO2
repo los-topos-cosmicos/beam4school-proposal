@@ -3,7 +3,7 @@
 # comparing a plastic baseline (PE), a problem plastic (PVC) and a heritage material (SiO2)
 # across 5 thicknesses from 0.5 to 50 mm
 
-author: Agustina
+author:Agustina
 description: "Thickness scan: optimizing target thickness for best separation between PE, PVC and quartz (SiO2)"
 
 # ─── Beam Settings ───
