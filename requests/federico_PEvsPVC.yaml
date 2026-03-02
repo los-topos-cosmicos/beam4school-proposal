@@ -1,0 +1,37 @@
+# File: requests/bustillo_pe_pvc.yaml
+# ═══════════════════════════════════════════════════════════════
+# BeamScan Simulation Request
+# Comparison: PE vs PVC
+# ═══════════════════════════════════════════════════════════════
+
+# Author placeholder: replace if you want automatic metadata in your system
+author: "Federico_Bustillo"
+
+# Short description of the experiment
+description: "Comparison between polyethylene (PE) and polyvinyl chloride (PVC) using electron beams."
+
+# ─── Beam Settings ───
+beam:
+  particle: "e-"               # Electrons
+  momenta_GeV: [3.0, 6.0]      # Beam energies to simulate (GeV/c)
+  num_events: 10000            # Events per configuration
+
+# ─── Target Materials ───
+materials:
+  - name: "PE"
+    geant4_name: "G4_POLYETHYLENE"
+    thickness_mm: 10.0
+    notes: "Low-Z polymer (C,H) — expected lower scattering"
+
+  - name: "PVC"
+    geant4_name: "G4_POLYVINYL_CHLORIDE"
+    thickness_mm: 10.0
+    notes: "Contains Cl (higher-Z) — expected higher scattering and energy loss"
+
+# ─── Outputs ───
+outputs:
+  highland_prediction: true    # Always fast — Highland formula calculation
+  geant4_simulation: false     # Set true for full Monte Carlo (slower, needs approval)
+  classification_plot: true    # 2D fingerprint plot
+  distribution_overlay: true   # Overlaid scattering angle distributions
+  comparison_table: true       # Numerical comparison table
