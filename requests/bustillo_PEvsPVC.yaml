@@ -21,12 +21,11 @@ materials:
   - name: "PE"
     geant4_name: "G4_POLYETHYLENE"
     thickness_mm: 10.0
-    notes: "Low-Z polymer (C,H) — expected lower scattering"
+     
 
   - name: "PVC"
     geant4_name: "G4_POLYVINYL_CHLORIDE"
     thickness_mm: 10.0
-    notes: "Contains Cl (higher-Z) — expected higher scattering and energy loss"
 
 # ─── Outputs ───
   highland_prediction: true    # Always fast — Highland formula calculation
