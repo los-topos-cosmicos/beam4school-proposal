@@ -42,21 +42,21 @@ We have built a Geant4 Monte Carlo simulation of the full experiment, published 
 ![Geant4 Highland ratio](docs/figures/geant4_highland_ratio.png)
 Figure 4: Geant4/Highland ratio for all materials at 3 and 6 GeV/c. Most materials fall within the 12 ± 3% band, consistent with nuclear elastic scattering omitted by Highland. Fe₂O₃ is a clear outlier, revealing the larger hadronic cross-section of iron nuclei.
 
----
+
 ## 3. What We Hope to Take Away
 We want to return to Córdoba with a validated BeamScan Atlas, the experience of running a real experiment at a world-class facility, and a story to share. If students from Argentina can use a CERN beamline to help solve recycling challenges and study their country's archaeological heritage, it shows that fundamental physics belongs to everyone. We will share our results with local cooperatives, schools, and museums — and publish everything openly so others can build on our work.
----
+
 
 ## 4. Acknowledgement
 We would like to sincerely thank Arturo Sánchez Pineda (PhD in Fundamental Physics, Senior DevOps Engineer & Researcher) for his guidance and support throughout this project, and the Museo Estanislao Baños (Santa Rosa de Calamuchita) for opening their doors to our team — their collection and archive are the root of the heritage science dimension of BeamScan.
----
+
 
 ## Outreach Activity
 We built a public website — the BeamScan Atlas — where anyone can see the results of our experiment: how each material produces a different scattering angle, why that happens physically, and what it means for recycling or heritage science. All the data is downloadable and open.
 We also set up a GitHub repository (https://github.com/los-topos-cosmicos/beam4school-proposal/tree/main) with our Geant4 simulations, analysis scripts, raw data, and tutorials written in Spanish and English. The idea is that any student — anywhere in Latin America — can fork the repo, edit a YAML file, and get their own scattering prediction in about 30 seconds, without installing anything. We wanted it to feel like something you can actually touch.
 Finally, we're organizing outreach across our community — at the municipal cooperative, the town museum, and our school. By participating in our school's science fair, we become eligible to compete at regional and national levels, so our results could reach audiences well beyond Santa Rosa de Calamuchita. In every setting, the message is the same: the physics behind our experiment can help identify a 2,000-year-old Comechingón rock and detect PVC in a recycling stream.
 Fundamental physics belongs to everyone.
----
+
 
 ## Bibliography
 [1] M. Paci and F. P. La Mantia, “Influence of small amounts of polyvinylchloride on the recycling of polyethyleneterephthalate,” Polymer Degradation and Stability, vol. 63, no. 1, pp. 11–14, Jan. 1999. https://doi.org/10.1016/S0141-3910(98)00053-6 
