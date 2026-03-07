@@ -3,7 +3,7 @@
 **Coaches:** García Iskya, Rodríguez Agustina
 **Assessed by:** Arturo Sánchez Pineda
 ![Team 2026](docs/figures/teamcoaches2026.png)
-**Instituto San Francisco de Asís, Santa Rosa de Calamuchita, Córdoba, Argentina.*
+**Instituto San Francisco de Asís, Santa Rosa de Calamuchita, Córdoba, Argentina.**
 **March 2026.**
 
 
